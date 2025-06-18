@@ -1,0 +1,65 @@
+name: fdp1p
+services:
+  graphdb:
+    # BEWARE: for the first run, we need to create a repository called "fdp" using the graphdb api or web-interface
+    # (you can either compose up graphdb first, or, if you're quick, do this while graphdb health checks are running)
+    image: "ontotext/graphdb:${GRAPHDB_VERSION:-10.8.8}"
+    restart: no
+    ports:
+      # publish to localhost only
+      # <host ip>:<host port>:<container port>
+      - "127.0.0.1:7200:7200"
+    volumes:
+      - graphdbdata:/opt/graphdb/home
+    # https://docs.docker.com/reference/compose-file/services/#healthcheck
+    # https://graphdb.ontotext.com/documentation/10.7/database-health-checks.html
+    healthcheck:
+      # test the status code, because the health endpoint requires authentication
+      test: echo "200,206,401" | grep -q $(curl http://graphdb:7200/repositories/fdp/health --silent --output /dev/null --write-out '%{http_code}') || exit 1
+      start_interval: 3s
+      start_period: 30s
+
+  mongo:
+    image: "mongo:${MONGO_VERSION:-8.0}"
+    restart: no
+    healthcheck:
+      test: |
+        [ $(mongosh --quiet --host localhost:27017 --eval "db.runCommand('ping').ok") = 1 ] || exit 1
+      start_interval: 3s
+      start_period: 30s
+    volumes:
+      - mongodbdata:/data/db
+
+  fdp:
+    image: "fairdata/fairdatapoint:${FDP_VERSION:-1.17}"
+    environment:
+      SERVER_PORT: 8080
+      INSTANCE_CLIENTURL: http://localhost
+      INSTANCE_PERSISTENTURL: http://localhost
+      REPOSITORY_TYPE: 4
+      REPOSITORY_GRAPHDB_URL: http://graphdb:7200
+      REPOSITORY_GRAPHDB_REPOSITORY: fdp
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/fdp
+    depends_on:
+      graphdb:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    healthcheck:
+      test: wget -q --spider http://localhost:8080 || exit 1
+      start_interval: 3s
+      start_period: 30s
+
+  fdp-client:
+    image: "fairdata/fairdatapoint-client:${FDP_CLIENT_VERSION:-1.17}"
+    ports:
+      - "127.0.0.1:80:80"
+    environment:
+      - FDP_HOST=fdp:8080
+    depends_on:
+      fdp:
+        condition: service_healthy
+
+volumes:
+  graphdbdata:
+  mongodbdata:
