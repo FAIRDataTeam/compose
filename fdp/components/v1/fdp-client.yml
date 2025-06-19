@@ -1,0 +1,11 @@
+services:
+  fdp-client:
+    image: "fairdata/fairdatapoint-client:${FDP_CLIENT_VERSION:-1.17}"
+    restart: no
+    ports:
+      - "127.0.0.1:80:80"
+    environment:
+      - FDP_HOST=fdp:8080
+    depends_on:
+      fdp:
+        condition: service_healthy

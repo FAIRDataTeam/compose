@@ -1,0 +1,5 @@
+name: fdpminv1
+include:
+  - ../../components/v1/mongo.yml
+  - ../../components/v1/fdp.yml
+  - ../../components/v1/fdp-client.yml
