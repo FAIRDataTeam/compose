@@ -1,5 +1,9 @@
 # note docker compose automatically loads compose.yml *and* compose.override.yml (if present)
 services:
+  mongo:
+    # when running the fdp from source, it is not part of the docker network, so we need to expose mongo
+    ports:
+      - "127.0.0.1:27017:27017"
   fdp-client:
     depends_on: !reset []
     # when running the fdp from source, the fdp-client needs network access to the docker host.
