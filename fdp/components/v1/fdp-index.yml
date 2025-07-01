@@ -1,0 +1,18 @@
+services:
+  fdp-index:
+    image: "fairdata/fairdatapoint:${FDP_VERSION:-1.17}"
+    restart: no
+    environment:
+      FDP_MONGO_DB: 'fdp-index'
+      INSTANCE_CLIENTURL: "http://localhost:${FDP_INDEX_PORT:-8082}"
+      INSTANCE_INDEX: true
+      INSTANCE_PERSISTENTURL: "http://localhost:${FDP_INDEX_PORT:-8082}"
+      PING_ENABLED: false
+      SERVER_PORT: "${FDP_INDEX_PORT:-8082}"
+    depends_on:
+      mongo:
+        condition: service_healthy
+    healthcheck:
+      test: "wget -q --spider http://localhost:${FDP_INDEX_PORT:-8082} || exit 1"
+      start_interval: 3s
+      start_period: 30s
