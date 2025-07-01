@@ -6,6 +6,12 @@ like FAIR Data Point, FAIR Data Train, etc.
 >[!IMPORTANT]
 >These files are ***not*** intended for use in production.
 
+## Quickstart
+
+1. `cd` into the directory for the desired configuration, e.g. `cd fdp/minimal/v2`
+2. set up: `docker compose up -d`
+3. tear down: `docker compose down` (from the same directory)
+
 ## Description
 
 Re-usable Docker compose services are specified in separate directories such as [fdp/components](./fdp/components).
