@@ -8,7 +8,7 @@ like FAIR Data Point, FAIR Data Train, etc.
 
 ## Description
 
-Re-usable Docker compose services are specified in separate directories such as [fdp/components].
+Re-usable Docker compose services are specified in separate directories such as [fdp/components](./fdp/components).
 These components are used to construct compose files for various use cases.
 
 For example, [fdp/minimal/v1/compose.yml](./fdp/minimal/v1/compose.yml) defines a minimal setup, consisting of the following Docker containers:
