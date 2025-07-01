@@ -1,0 +1,5 @@
+# setup for local development, running fdp from source
+name: fdpminv2devfdp
+include:
+  - ../../../../components/v2/postgres.yml
+  - ../../../../components/v2/fdp-client.yml

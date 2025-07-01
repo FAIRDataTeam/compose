@@ -1,0 +1,16 @@
+# note docker compose automatically loads compose.yml *and* compose.override.yml (if present)
+services:
+  postgres:
+    # when running the fdp from source, it is not part of the docker network, so we need to expose postgres
+    ports:
+      - "127.0.0.1:54321:5432"
+    volumes:
+      # fdp unittests use a separate db, so we need to create that test db in addition to the main db
+      - ./init-test-db.sh:/docker-entrypoint-initdb.d/init-test-db.sh
+  fdp-client:
+    depends_on: !reset []
+    # when running the fdp from source, the fdp-client needs network access to the docker host.
+    environment:
+      FDP_HOST: host.docker.internal:8080
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
