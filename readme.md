@@ -56,6 +56,15 @@ To check the actual result of such a [merge], we can use the [`compose config`] 
 docker compose config
 ``` 
 
+If desired, specific Docker image versions can be specified using environment variables, before calling `compose up`.
+For example:
+
+```bash
+export FDP_CLIENT_VERSION=2.0.0-alpha.2
+```
+
+Refer to the compose files in the `components` directories to see the environment variable names. 
+
 ## WORK IN PROGRESS
 
 - Compose files for fdp/persistent and fdp/minimal/v2 need to be refactored and/or added.
