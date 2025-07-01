@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: "postgres:${POSTGRES_VERSION:-17.5}"
+    restart: no
+    healthcheck:
+      test: pg_isready --dbname=fdp --username=fdp || exit 1
+      start_interval: 3s
+      start_period: 30s
+    environment:
+      POSTGRES_DB: fdp
+      POSTGRES_PASSWORD: fdp
+      POSTGRES_USER: fdp
