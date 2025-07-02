@@ -8,7 +8,7 @@ like FAIR Data Point, FAIR Data Train, etc.
 
 ## Quickstart
 
-1. `cd` into the directory for the desired configuration, e.g. `cd fdp/minimal/v2`
+1. `cd` into the directory for the desired configuration, e.g. `cd fdp/ephemeral/v2`
 2. set up: `docker compose up -d`
 3. tear down: `docker compose down` (from the same directory)
 
@@ -17,7 +17,7 @@ like FAIR Data Point, FAIR Data Train, etc.
 Re-usable Docker compose services are specified in separate directories such as [fdp/components](./fdp/components).
 These components are used to construct compose files for various use cases.
 
-For example, [fdp/minimal/v1/compose.yml](./fdp/minimal/v1/compose.yml) defines a minimal setup, consisting of the following Docker containers:
+For example, [fdp/ephemeral/v1/compose.yml](fdp/ephemeral/v1/compose.yml) defines a minimal setup, consisting of the following Docker containers:
  
 - mongodb
 - fdp v1.x
@@ -40,14 +40,14 @@ Moreover, some configurations rely on this method to override certain service at
 For example, compare this approach to merge `compose.yml` with `compose.override.yml`:
 
 ```bash
-cd fdp/minimal/v1/dev/fdp
+cd fdp/ephemeral/v1/dev/fdp
 docker compose up -d
 ```
 
 with the alternative:
 
 ```bash
-docker compose -f fdp/minimal/v1/dev/fdp/compose.yml -f fdp/minimal/v1/dev/fdp/compose.override.yml up -d
+docker compose -f fdp/ephemeral/v1/dev/fdp/compose.yml -f fdp/ephemeral/v1/dev/fdp/compose.override.yml up -d
 ```
 
 To check the actual result of such a [merge], we can use the [`compose config`] command:
@@ -67,7 +67,7 @@ Refer to the compose files in the `components` directories to see the environmen
 
 ## WORK IN PROGRESS
 
-- Compose files for fdp/persistent and fdp/minimal/v2 need to be refactored and/or added.
+- Compose files for fdp/persistent and fdp/ephemeral/v2 need to be refactored and/or added.
 - Compose files for fdt need to be added (fair data train etc.)
 
 [`compose config`]: https://docs.docker.com/reference/cli/docker/compose/config/
