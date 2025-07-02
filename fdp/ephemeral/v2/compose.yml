@@ -1,4 +1,4 @@
-name: fdpminv2
+name: fdpev2
 include:
   - ../../components/db/postgres.yml
   - ../../components/v2/fdp.yml

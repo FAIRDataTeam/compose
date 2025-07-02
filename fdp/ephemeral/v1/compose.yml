@@ -1,4 +1,4 @@
-name: fdpminv1
+name: fdpev1
 include:
   - ../../components/db/mongo.yml
   - ../../components/v1/fdp.yml
