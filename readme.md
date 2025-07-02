@@ -1,7 +1,7 @@
 # FAIRDataTeam compose collection
 
 This repository contains a collection of Docker compose files for development and testing of FAIRDataTeam applications 
-like FAIR Data Point, FAIR Data Train, etc.
+like [FAIR Data Point], [FAIR Data Train], etc.
 
 >[!IMPORTANT]
 >These files are ***not*** intended for use in production.
@@ -72,3 +72,5 @@ Refer to the compose files in the `components` directories to see the environmen
 
 [`compose config`]: https://docs.docker.com/reference/cli/docker/compose/config/
 [merge]: https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/
+[FAIR Data Point]: https://github.com/FAIRDataTeam/FAIRDataPoint
+[FAIR Data Train]: https://github.com/FAIRDataTeam/FAIRDataTrain
