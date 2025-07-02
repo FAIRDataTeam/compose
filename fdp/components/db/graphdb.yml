@@ -1,0 +1,16 @@
+services:
+  graphdb:
+    # BEWARE: for the first run, we need to create a repository called "fdp" using the graphdb api or web-interface
+    # (you can either compose up graphdb first, or, if you're quick, do this while graphdb health checks are running)
+    image: "ontotext/graphdb:${GRAPHDB_VERSION:-10.8.8}"
+    restart: no
+    ports:
+      # expose to localhost so we can create the "fdp" repo using the graphdb web ui
+      - "127.0.0.1:7200:7200"
+    healthcheck:
+      # test the status code, because the health endpoint requires authentication
+      # https://graphdb.ontotext.com/documentation/10.8/database-health-checks.html
+      # BEWARE: this fails if the "fdp" repo does not exist
+      test: echo '200,206,401' | grep -q $(curl http://localhost:7200/repositories/fdp/health --silent --output /dev/null --write-out '%{http_code}') || exit 1
+      start_interval: 3s
+      start_period: 30s

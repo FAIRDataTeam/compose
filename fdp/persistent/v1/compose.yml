@@ -1,0 +1,6 @@
+name: fdppv1
+include:
+  - ../../components/db/graphdb.yml
+  - ../../components/v1/mongo.yml
+  - ../../components/v1/fdp.yml
+  - ../../components/v1/fdp-client.yml
