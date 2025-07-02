@@ -8,7 +8,7 @@ like FAIR Data Point, FAIR Data Train, etc.
 
 ## Quickstart
 
-1. `cd` into the directory for the desired configuration, e.g. `cd fdp/ephemeral/v2`
+1. `cd` into the directory for the desired configuration, e.g. `cd fdp/ephemeral/v2` (this important because we rely on autodetection of `compose.override.yml` files)
 2. set up: `docker compose up -d`
 3. tear down: `docker compose down` (from the same directory)
 
