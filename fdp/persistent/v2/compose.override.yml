@@ -1,0 +1,31 @@
+# note docker compose automatically loads compose.yml *and* compose.override.yml (if present)
+services:
+  # configure fdp to use graphdb instead of the in-memory triple store
+  # BEWARE: for fdp v2 we need to create *two* graphdb repos: "fdp" and "fdp-drafts"
+  fdp:
+    environment:
+      REPOSITORY_MAIN_TYPE: 4
+      REPOSITORY_MAIN_GRAPHDB_URL: http://graphdb:7200
+      REPOSITORY_MAIN_GRAPHDB_REPOSITORY: "fdp"
+      REPOSITORY_DRAFTS_TYPE: 4
+      REPOSITORY_DRAFTS_GRAPHDB_URL: http://graphdb:7200
+      REPOSITORY_DRAFTS_GRAPHDB_REPOSITORY: "fdp-drafts"
+      # TODO: beware, the postgres data are not persistent yet,
+      # because the development profile cleans the db every time the app is (re)started.
+      # this can be disabled using flyway.clean.disabled, but then we get an error...
+      SPRING_FLYWAY_CLEAN_DISABLED: false
+    depends_on:
+      # depend on graphdb (in addition to mongo)
+      graphdb:
+        condition: service_healthy
+  # use docker managed volumes for data persistence
+  graphdb:
+    volumes:
+      - graphdbdata:/opt/graphdb/home
+  postgres:
+    volumes:
+      - postgresqldata:/var/lib/postgresql/data
+
+volumes:
+  graphdbdata:
+  postgresqldata:

@@ -1,6 +1,7 @@
 services:
   graphdb:
     # BEWARE: for the first run, we need to create a repository called "fdp" using the graphdb api or web-interface
+    # and for fdp v2, we need to create an additional repo called "fdp-drafts"
     # (you can either compose up graphdb first, or, if you're quick, do this while graphdb health checks are running)
     image: "ontotext/graphdb:${GRAPHDB_VERSION:-10.8.8}"
     restart: no

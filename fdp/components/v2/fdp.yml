@@ -5,6 +5,7 @@ services:
     environment:
       INSTANCE_CLIENTURL: http://localhost
       INSTANCE_PERSISTENTURL: http://localhost
+      # TODO: using the development profile is a temporary workaround for FDP #634
       JAVA_TOOL_OPTIONS: -Dspring.profiles.active=development
       SERVER_PORT: 8080
       SPRING_AUTOCONFIGURE_EXCLUDE: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration

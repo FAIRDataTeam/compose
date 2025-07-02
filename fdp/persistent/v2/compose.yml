@@ -1,0 +1,6 @@
+name: fdppv2
+include:
+  - ../../components/db/graphdb.yml
+  - ../../components/db/postgres.yml
+  - ../../components/v2/fdp.yml
+  - ../../components/v2/fdp-client.yml
