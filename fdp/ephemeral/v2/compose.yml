@@ -1,5 +1,5 @@
 name: fdpminv2
 include:
-  - ../../components/v2/postgres.yml
+  - ../../components/db/postgres.yml
   - ../../components/v2/fdp.yml
   - ../../components/v2/fdp-client.yml
