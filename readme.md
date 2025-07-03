@@ -8,9 +8,10 @@ like [FAIR Data Point], [FAIR Data Train], etc.
 
 ## Quickstart
 
-1. `cd` into the directory for the desired configuration, e.g. `cd fdp/ephemeral/v2` (this important because we rely on autodetection of `compose.override.yml` files)
+1. `cd` into the directory for the desired configuration, e.g. `cd fdp/ephemeral/v1` (this important because we rely on autodetection of `compose.override.yml` files)
 2. set up: `docker compose up -d`
-3. tear down: `docker compose down` (from the same directory)
+3. visit http://localhost in your browser to play around with the application
+4. tear down: `docker compose down` (from the same directory)
 
 ## Description
 
@@ -65,6 +66,25 @@ export FDP_CLIENT_VERSION=2.0.0-alpha.2
 
 Refer to the compose files in the `components` directories to see the environment variable names. 
 
+## Troubleshooting
+
+### Q: Compose up fails with "no matching manifest" on macOS
+
+On a mac with Apple silicon (or on other computers with arm64 processor architecture), `docker compose up -d` may produce an error like the following:
+
+```none
+no matching manifest for linux/arm64/v8 in the manifest list entries
+``` 
+ 
+This is because the latest versions of the fdp-client (`>1.17.0`)  don't have Docker images for arm64 architectures, for reasons explained in [fdp-client issue #188].
+
+While FAIRDataTeam/FAIRDataPoint-client#188 remains open, here are some temporary workarounds:
+
+- roll back to an older version of the client, using env variables, e.g. `export FDP_CLIENT_VERSION=1.17.0`
+- (not tested) force emulation by specifying `platform: linux/amd64` for the `fdp-client` service in the compose file
+
+Check the `OS/ARCH` column on [Docker hub] to see which client versions do support `linux/arm64`. 
+
 ## WORK IN PROGRESS
 
 - Compose files for fdp/persistent and fdp/ephemeral/v2 need to be refactored and/or added.
@@ -74,3 +94,5 @@ Refer to the compose files in the `components` directories to see the environmen
 [merge]: https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/
 [FAIR Data Point]: https://github.com/FAIRDataTeam/FAIRDataPoint
 [FAIR Data Train]: https://github.com/FAIRDataTeam/FAIRDataTrain
+[fdp-client issue #188]: https://github.com/FAIRDataTeam/FAIRDataPoint-client/issues/188
+[Docker hub]: https://hub.docker.com/r/fairdata/fairdatapoint-client/tags
