@@ -68,7 +68,7 @@ Refer to the compose files in the `components` directories to see the environmen
 
 ## Troubleshooting
 
-### Q: Compose up fails with "no matching manifest" on macOS
+### Compose up fails with "no matching manifest" on macOS
 
 On a mac with Apple silicon (or on other computers with arm64 processor architecture), `docker compose up -d` may produce an error like the following:
 
@@ -76,7 +76,7 @@ On a mac with Apple silicon (or on other computers with arm64 processor architec
 no matching manifest for linux/arm64/v8 in the manifest list entries
 ``` 
  
-This is because the latest versions of the fdp-client (`>1.17.0`)  don't have Docker images for arm64 architectures, for reasons explained in [fdp-client issue #188].
+This is because the latest versions of the fdp-client (`>1.17.0`)  don't have Docker images for arm64 architectures, for reasons explained in FAIRDataTeam/FAIRDataPoint-client#188.
 
 While FAIRDataTeam/FAIRDataPoint-client#188 remains open, here are some temporary workarounds:
 
@@ -94,5 +94,4 @@ Check the `OS/ARCH` column on [Docker hub] to see which client versions do suppo
 [merge]: https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/
 [FAIR Data Point]: https://github.com/FAIRDataTeam/FAIRDataPoint
 [FAIR Data Train]: https://github.com/FAIRDataTeam/FAIRDataTrain
-[fdp-client issue #188]: https://github.com/FAIRDataTeam/FAIRDataPoint-client/issues/188
 [Docker hub]: https://hub.docker.com/r/fairdata/fairdatapoint-client/tags
