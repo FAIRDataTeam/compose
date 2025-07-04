@@ -1,0 +1,5 @@
+services:
+  postgres:
+    volumes:
+      # the index needs a separate db, so we need to create that db in addition to the main db
+      - ./init-index-db.sh:/docker-entrypoint-initdb.d/init-index-db.sh
