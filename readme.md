@@ -28,6 +28,8 @@ This uses the FDP's default in-memory triplestore, and mongodb data is non-persi
 
 If you want persistent storage, use one of the setups from the [fdp/persistent](./fdp/persistent) directory, which *do* use Docker volumes.
 
+Similarly, if you're interested in the FDP index, run the setup from [fdp/ephemeral/v1/index](./fdp/ephemeral/v1/index), for example.
+
 ## Usage
 
 Although it is possible to specify one or more Docker compose files on the command line, using the `-f` option, this repo relies on the default Docker compose behavior which is to automatically [merge] the following files:
