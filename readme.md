@@ -85,9 +85,8 @@ While FAIRDataTeam/FAIRDataPoint-client#188 remains open, here are some temporar
 
 Check the `OS/ARCH` column on [Docker hub] to see which client versions do support `linux/arm64`. 
 
-## WORK IN PROGRESS
+## Work in progress...
 
-- Compose files for fdp/persistent and fdp/ephemeral/v2 need to be refactored and/or added.
 - Compose files for fdt need to be added (fair data train etc.)
 
 [`compose config`]: https://docs.docker.com/reference/cli/docker/compose/config/
