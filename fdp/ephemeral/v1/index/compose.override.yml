@@ -1,0 +1,9 @@
+services:
+  fdp-client:
+    environment:
+      # client v1 index functionality is enabled via APP, so no need to use separate fairdatapoint-index-client image
+      APP: fairdatapoint-index
+      FDP_HOST: "fdp-index:${FDP_INDEX_PORT:-8082}"
+    depends_on: !override
+      fdp-index:
+        condition: service_healthy

@@ -1,0 +1,12 @@
+services:
+  postgres:
+    volumes:
+      # the index needs a separate db, so we need to create that db in addition to the main db
+      - ./init-index-db.sh:/docker-entrypoint-initdb.d/init-index-db.sh
+  fdp-client:
+    environment:
+      # index functionality is enabled automatically in the v2 client
+      FDP_HOST: "fdp-index:${FDP_INDEX_PORT:-8082}"
+    depends_on: !override
+      fdp-index:
+        condition: service_healthy

@@ -1,0 +1,5 @@
+name: fdpev2
+include:
+  - ../../../components/db/postgres.yml
+  - ../../../components/v2/fdp-index.yml
+  - ../../../components/v2/fdp-client.yml
