@@ -2,4 +2,4 @@ name: fdpev1index
 include:
   - ../../../components/db/mongo.yml
   - ../../../components/v1/fdp-index.yml
-  - ../../../components/v1/fdp-client.yml
+  - ../../../components/v1/fdp-index-client.yml

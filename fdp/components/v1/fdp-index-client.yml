@@ -1,0 +1,13 @@
+services:
+  fdp-index-client:
+    image: "fairdata/fairdatapoint-client:${FDP_CLIENT_VERSION:-1.17}"
+    restart: no
+    ports:
+      - "127.0.0.1:80:80"
+    environment:
+      # enable index functionality via APP, so we don't need to use a separate fairdatapoint-index-client image
+      APP: fairdatapoint-index
+      FDP_HOST: "fdp-index:${FDP_INDEX_PORT:-8082}"
+    depends_on:
+      fdp-index:
+        condition: service_healthy
