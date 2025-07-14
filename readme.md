@@ -68,6 +68,9 @@ export FDP_CLIENT_VERSION=2.0.0-alpha.2
 
 Refer to the compose files in the `components` directories to see the environment variable names. 
 
+If you want to persist the use of specific versions, create a [`.env` file] in the applicable directory with the desired environment variables.
+This file will be picked up automatically when you run `docker compose`. See [docker environment variables] for more information. 
+
 ## Troubleshooting
 
 ### Compose up fails with "no matching manifest" on macOS
@@ -96,3 +99,5 @@ Check the `OS/ARCH` column on [Docker hub] to see which client versions do suppo
 [FAIR Data Point]: https://github.com/FAIRDataTeam/FAIRDataPoint
 [FAIR Data Train]: https://github.com/FAIRDataTeam/FAIRDataTrain
 [Docker hub]: https://hub.docker.com/r/fairdata/fairdatapoint-client/tags
+[`.env` file]: https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#env-file
+[docker environment variables]: https://docs.docker.com/compose/how-tos/environment-variables/set-environment-variables/
