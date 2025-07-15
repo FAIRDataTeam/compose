@@ -1,0 +1,17 @@
+{
+  "id": "fdp-drafts",
+  "title": "",
+  "type": "graphdb",
+  "params": {
+    "defaultNS": {
+      "name": "defaultNS",
+      "label": "Default namespaces for imports(';' delimited)",
+      "value": ""
+    },
+    "imports": {
+      "name": "imports",
+      "label": "Imported RDF files(';' delimited)",
+      "value": ""
+    }
+  }
+}
