@@ -15,9 +15,9 @@ services:
       # this can be disabled using flyway.clean.disabled, but then we get an error...
       SPRING_FLYWAY_CLEAN_DISABLED: false
     depends_on:
-      # depend on graphdb (in addition to mongo)
-      graphdb:
-        condition: service_healthy
+      # depend on initialized graphdb (in addition to mongo)
+      graphdb-init:
+        condition: service_completed_successfully
   # use docker managed volumes for data persistence
   graphdb:
     volumes:

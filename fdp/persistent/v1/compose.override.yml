@@ -7,9 +7,9 @@ services:
       REPOSITORY_GRAPHDB_URL: http://graphdb:7200
       REPOSITORY_GRAPHDB_REPOSITORY: fdp
     depends_on:
-      # depend on graphdb (in addition to mongo)
-      graphdb:
-        condition: service_healthy
+      # depend on initialized graphdb (in addition to mongo)
+      graphdb-init:
+        condition: service_completed_successfully
   # use docker managed volumes for data persistence
   graphdb:
     volumes:
