@@ -1,7 +1,6 @@
 # note docker compose automatically loads compose.yml *and* compose.override.yml (if present)
 services:
   # configure fdp to use graphdb instead of the in-memory triple store
-  # BEWARE: for fdp v2 we need to create *two* graphdb repos: "fdp" and "fdp-drafts"
   fdp:
     environment:
       REPOSITORY_MAIN_TYPE: 4
