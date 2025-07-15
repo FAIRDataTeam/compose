@@ -1,0 +1,6 @@
+# note docker compose automatically loads compose.yml *and* compose.override.yml (if present)
+services:
+  fdp:
+    # expose on localhost, because a client running from source has no access to the docker network
+    ports:
+      - "127.0.0.1:8080:8080"
