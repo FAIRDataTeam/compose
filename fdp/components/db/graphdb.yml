@@ -9,9 +9,29 @@ services:
       # expose to localhost so we can create the "fdp" repo using the graphdb web ui
       - "127.0.0.1:7200:7200"
     healthcheck:
-      # test the status code, because the health endpoint requires authentication
-      # https://graphdb.ontotext.com/documentation/10.8/database-health-checks.html
-      # BEWARE: this fails if the "fdp" repo does not exist
-      test: echo '200,206,401' | grep -q $(curl http://localhost:7200/repositories/fdp/health --silent --output /dev/null --write-out '%{http_code}') || exit 1
+      # test if reachable (also works if there are no repositories yet)
+      test: "curl http://localhost:7200/rest/monitor/infrastructure --silent --fail || exit 1"
       start_interval: 3s
       start_period: 30s
+
+  graphdb-init:
+    # this service uses the graphdb rest api to create repositories defined in the repos/*.json files
+    # (safe to call if repositories exist)
+    # https://graphdb.ontotext.com/documentation/10.8/manage-repos-with-restapi.html#create-a-repository
+    # https://graphdb.ontotext.com/documentation/10.8/manage-repos-with-curl.html
+    image: "curlimages/curl:${CURL_VERSION:-latest}"
+    restart: no
+    volumes:
+      - "$PWD/repos:/repos"
+    # the following returns status 201 if the repo does not exist, or status 400 otherwise
+    command:
+      - sh
+      - -c
+      - |
+        for file in /repos/*.json
+        do
+        curl http://graphdb:7200/rest/repositories --verbose --silent --header "Content-Type: application/json" --data "@$$file"
+        done
+    depends_on:
+      graphdb:
+        condition: service_healthy
