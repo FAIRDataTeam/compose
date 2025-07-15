@@ -63,7 +63,7 @@ If desired, specific Docker image versions can be specified using environment va
 For example:
 
 ```bash
-export FDP_CLIENT_VERSION=2.0.0-alpha.2
+export FDP_CLIENT_VERSION=2.0.0-alpha.3
 ```
 
 Refer to the compose files in the `components` directories to see the environment variable names. 
