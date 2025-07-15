@@ -1,6 +1,6 @@
 services:
   fdp-index:
-    image: "fairdata/fairdatapoint:${FDP_VERSION:-2.0.0-alpha.2}"
+    image: "fairdata/fairdatapoint:${FDP_VERSION:-2.0.0-alpha.3}"
     restart: no
     environment:
       INSTANCE_CLIENTURL: "http://localhost:${FDP_INDEX_PORT:-8082}"

@@ -2,7 +2,7 @@ services:
   # the fdp v2 client automatically enables index functionality, so this configuration is identical to that of the
   # normal v2 client, except for the index service names and index port
   fdp-index-client:
-    image: "fairdata/fairdatapoint-client:${FDP_CLIENT_VERSION:-2.0.0-alpha.2}"
+    image: "fairdata/fairdatapoint-client:${FDP_CLIENT_VERSION:-2.0.0-alpha.3}"
     restart: no
     ports:
       - "127.0.0.1:80:80"
