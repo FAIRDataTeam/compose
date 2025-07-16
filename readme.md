@@ -13,6 +13,9 @@ like [FAIR Data Point], [FAIR Data Train], etc.
 3. visit http://localhost in your browser to play around with the application
 4. tear down: `docker compose down` (from the same directory)
 
+Note: To remove *persistent* data, it is convenient to use `docker compose down --volumes`.
+Do be careful though, because this is irreversible.
+
 ## Description
 
 Re-usable Docker compose services are specified in separate directories such as [fdp/components](./fdp/components).
@@ -69,7 +72,7 @@ export FDP_CLIENT_VERSION=2.0.0-alpha.3
 Refer to the compose files in the `components` directories to see the environment variable names. 
 
 If you want to persist the use of specific versions, create a [`.env` file] in the applicable directory with the desired environment variables.
-This file will be picked up automatically when you run `docker compose`. See [docker environment variables] for more information. 
+This file will be picked up automatically when you run `docker compose`. See [docker environment variables] for more information.
 
 ## Troubleshooting
 
