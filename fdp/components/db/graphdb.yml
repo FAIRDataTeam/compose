@@ -29,8 +29,10 @@ services:
       - -c
       - |
         for name in $$REPO_NAMES
-        do        
+        do
+        # substitute "repo-name" by variable name in graphdb repo template
         data=$$(sed s/repo-name/$$name/g /templates/graphdb-repo-template.json)
+        # post repo definition to graphdb rest api
         curl http://graphdb:7200/rest/repositories --verbose --silent --header "Content-Type: application/json" --data "$$data"
         done
     depends_on:
