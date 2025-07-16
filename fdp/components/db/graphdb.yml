@@ -19,15 +19,19 @@ services:
     image: "curlimages/curl:${CURL_VERSION:-latest}"
     restart: no
     volumes:
-      - "$PWD/repos:/repos"
-    # the following returns status 201 if the repo does not exist, or status 400 otherwise
+      - ".:/templates"
+    environment:
+      # space-separated list of repo names
+      REPO_NAMES: fdp
+    # the following curl request returns status 201 if the repo does not exist, or status 400 otherwise
     command:
       - sh
       - -c
       - |
-        for file in /repos/*.json
-        do
-        curl http://graphdb:7200/rest/repositories --verbose --silent --header "Content-Type: application/json" --data "@$$file"
+        for name in $$REPO_NAMES
+        do        
+        data=$$(sed s/repo-name/$$name/g /templates/graphdb-repo-template.json)
+        curl http://graphdb:7200/rest/repositories --verbose --silent --header "Content-Type: application/json" --data "$$data"
         done
     depends_on:
       graphdb:
