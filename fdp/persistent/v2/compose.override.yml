@@ -5,10 +5,10 @@ services:
     environment:
       REPOSITORY_MAIN_TYPE: 4
       REPOSITORY_MAIN_GRAPHDB_URL: http://graphdb:7200
-      REPOSITORY_MAIN_GRAPHDB_REPOSITORY: "fdp"
+      REPOSITORY_MAIN_GRAPHDB_REPOSITORY: fdp
       REPOSITORY_DRAFTS_TYPE: 4
       REPOSITORY_DRAFTS_GRAPHDB_URL: http://graphdb:7200
-      REPOSITORY_DRAFTS_GRAPHDB_REPOSITORY: "fdp-drafts"
+      REPOSITORY_DRAFTS_GRAPHDB_REPOSITORY: fdp-drafts
       # TODO: beware, the postgres data are not persistent yet,
       # because the development profile cleans the db every time the app is (re)started.
       # this can be disabled using flyway.clean.disabled, but then we get an error...
@@ -21,6 +21,10 @@ services:
   graphdb:
     volumes:
       - graphdbdata:/opt/graphdb/home
+  graphdb-init:
+    environment:
+      # space-separated list of repo names
+      REPO_NAMES: fdp fdp-drafts
   postgres:
     volumes:
       - postgresqldata:/var/lib/postgresql/data
