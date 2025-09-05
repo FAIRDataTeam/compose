@@ -1,0 +1,32 @@
+# note docker compose automatically loads compose.yml *and* compose.override.yml (if present)
+services:
+  mongo:
+    # when running the fdp-inex from source, it is not part of the docker network, so we need to expose mongo
+    ports:
+      - "127.0.0.1:27017:27017"
+  fdp-index-client:
+    depends_on: !reset []
+    # when running the fdp-index from source, the fdp-client needs network access to the docker host
+    environment:
+      FDP_HOST: host.docker.internal:8080
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  fdp:
+    # expose to docker host, so the fdp-index (running from source) can harvest the metadata
+    ports:
+      - "127.0.0.1:8081:8080"
+    environment:
+      # IMPORTANT: remove localhost from the deny-list in the fdp-index config,
+      # using the client's index settings, otherwise pings from this fdp are denied
+      # todo: implement a way to override the default denyList in the fdp
+      INSTANCE_CLIENTURL: http://localhost:8081
+      INSTANCE_INDEX: false
+      PING_ENABLED: true
+      PING_ENDPOINTS: http://host.docker.internal:8080
+      PING_INTERVAL: 5000
+      # the mongo db name must be different from that of the fdp-index
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/fdp-ping
+    # this fdp is used to ping the fdp-index that's running from source
+    # therefore, it needs network access to the docker host
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
