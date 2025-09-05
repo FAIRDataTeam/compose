@@ -84,9 +84,11 @@ On a mac with Apple silicon (or on other computers with arm64 processor architec
 no matching manifest for linux/arm64/v8 in the manifest list entries
 ``` 
  
-This is because the latest versions of the fdp-client (`>1.17.0`)  don't have Docker images for arm64 architectures, for reasons explained in FAIRDataTeam/FAIRDataPoint-client#188.
+This is because the fdp-client version `1.17.1` does not have Docker images for arm64 architectures, for reasons explained in FAIRDataTeam/FAIRDataPoint-client#188.
 
-While FAIRDataTeam/FAIRDataPoint-client#188 remains open, here are some temporary workarounds:
+That is fixed in version `1.18.0`.
+
+If you still want to use `1.17.1`, here are some workarounds:
 
 - roll back to an older version of the client, using env variables, e.g. `export FDP_CLIENT_VERSION=1.17.0`
 - (not tested) force emulation by specifying `platform: linux/amd64` for the `fdp-client` service in the compose file
