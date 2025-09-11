@@ -1,0 +1,4 @@
+# everything in this direcorty is ignored
+*
+# except, of course, this file
+!.gitignore

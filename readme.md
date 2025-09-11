@@ -43,18 +43,19 @@ Although it is possible to specify one or more Docker compose files on the comma
 This way, we can `cd` into the desired directory and then simply call `docker compose` commands, without having to specify files explicitly using `-f`. 
 Moreover, some configurations rely on this method to override certain service attributes. 
 
-For example, compare this approach to merge `compose.yml` with `compose.override.yml`:
-
-```bash
-cd fdp/ephemeral/v1/dev/fdp
-docker compose up -d
-```
-
-with the alternative:
-
-```bash
-docker compose -f fdp/ephemeral/v1/dev/fdp/compose.yml -f fdp/ephemeral/v1/dev/fdp/compose.override.yml up -d
-```
+>[!NOTE]
+>Recommended usage:
+>
+>```bash
+>cd fdp/ephemeral/v1/dev/fdp
+>docker compose up -d
+>```
+>
+>Alternative approach:
+>
+>```bash
+>docker compose -f fdp/ephemeral/v1/dev/fdp/compose.yml -f fdp/ephemeral/v1/dev/fdp/compose.override.yml up -d
+>```
 
 To check the actual result of such a [merge], we can use the [`compose config`] command:
 
@@ -73,6 +74,12 @@ Refer to the compose files in the `components` directories to see the environmen
 
 If you want to persist the use of specific versions, create a [`.env` file] in the applicable directory with the desired environment variables.
 This file will be picked up automatically when you run `docker compose`. See [docker environment variables] for more information.
+
+## Customization
+
+If you need to customize one of the existing configurations, it is advisable to create a subdirectory in the `fdp/custom` directory.
+All files in this directory are automatically excluded from version control.
+You can then copy the corresponding `compose.yml` and `compose.override.yml` into that subdirectory and modify them as necessary.
 
 ## Troubleshooting
 
