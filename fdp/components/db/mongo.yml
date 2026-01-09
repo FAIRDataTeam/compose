@@ -1,6 +1,6 @@
 services:
   mongo:
-    image: "mongo:${MONGO_VERSION:-8.0}"
+    image: "mongo:${MONGO_VERSION:-8.2.3}"
     restart: no
     healthcheck:
       test: |
