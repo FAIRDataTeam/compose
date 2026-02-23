@@ -5,10 +5,11 @@ like [FAIR Data Point], [FAIR Data Train], etc.
 
 >[!IMPORTANT]
 >These files are ***not*** intended for use in production.
+>However, the "persistent" stack can be used as a starting point for developing your own production configuration.
 
 ## Quickstart
 
-1. `cd` into the directory for the desired configuration, e.g. `cd fdp/ephemeral/v1` (this important because we rely on autodetection of `compose.override.yml` files)
+1. `cd` into the directory for the desired configuration, e.g. `cd fdp/ephemeral/v1` (this is important because we rely on autodetection of `compose.override.yml` files)
 2. set up: `docker compose up -d`
 3. visit http://localhost in your browser to play around with the application
 4. tear down: `docker compose down` (from the same directory)
