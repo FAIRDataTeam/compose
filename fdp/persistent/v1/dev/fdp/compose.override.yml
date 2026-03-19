@@ -1,0 +1,37 @@
+# note docker compose automatically loads compose.yml *and* compose.override.yml (if present)
+
+# BEWARE: The fdp running from source needs to be configured to use graphdb.
+# This can be done by setting the following environment (configuration) variables:
+#   REPOSITORY_TYPE (or repository.type): 4
+#   REPOSITORY_GRAPHDB_URL (or repository.graphDb.url): http://graphdb:7200
+#   REPOSITORY_GRAPHDB_REPOSITORY (or repository.graphDb.repository): fdp
+# This could be done in a separate spring profile.
+
+services:
+  # use docker managed volumes for data persistence
+  graphdb:
+    # note that the graphdb component is already exposed on localhost:7200 by default
+    volumes:
+      - graphdbdata:/opt/graphdb/home
+  graphdb-init:
+    environment:
+      # space-separated list of repo names
+      REPO_NAMES: fdp
+  mongo:
+    volumes:
+      - mongodbdata:/data/db
+    # we need to expose mongodb on the host so the fdp can reach it
+    # (when running the fdp from source, it has no access to the docker network)
+    ports:
+      - "127.0.0.1:27017:27017"
+  fdp-client:
+    depends_on: !reset []
+    # when running the fdp from source, the fdp-client needs network access to the docker host.
+    environment:
+      FDP_HOST: host.docker.internal:8080
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  graphdbdata:
+  mongodbdata:
