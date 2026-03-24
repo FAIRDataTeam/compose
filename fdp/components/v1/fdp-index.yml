@@ -1,6 +1,6 @@
 services:
   fdp-index:
-    image: "fairdata/fairdatapoint:${FDP_VERSION:-1.18}"
+    image: "fairdata/fairdatapoint:${FDP_VERSION:-1.19.0}"
     restart: no
     environment:
       FDP_MONGO_DB: 'fdp-index'
