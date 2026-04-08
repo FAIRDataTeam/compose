@@ -1,0 +1,3 @@
+services:
+  # disable the fdp repo when running standalone
+  graphdb-init: !reset []

@@ -1,5 +1,5 @@
 name: fdpev1
 include:
-  - ../../components/db/mongo.yml
+  - ../../components/db/mongo/compose.yml
   - ../../components/v1/fdp.yml
   - ../../components/v1/fdp-client.yml

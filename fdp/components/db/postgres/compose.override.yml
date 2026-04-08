@@ -1,0 +1,5 @@
+services:
+  postgres:
+    # expose port on docker host when running standalone
+    ports:
+      - "127.0.0.1:5432:5432"

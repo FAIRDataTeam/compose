@@ -1,6 +1,6 @@
 # setup for local development, running fdp from source
 name: fdppv1devfdp
 include:
-  - ../../../../components/db/graphdb.yml
-  - ../../../../components/db/mongo.yml
+  - ../../../../components/db/graphdb/compose.yml
+  - ../../../../components/db/mongo/compose.yml
   - ../../../../components/v1/fdp-client.yml

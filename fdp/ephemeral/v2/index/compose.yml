@@ -1,5 +1,5 @@
 name: fdpev2index
 include:
-  - ../../../components/db/postgres.yml
+  - ../../../components/db/postgres/compose.yml
   - ../../../components/v2/fdp-index.yml
   - ../../../components/v2/fdp-index-client.yml
