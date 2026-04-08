@@ -2,5 +2,5 @@
 name: fdppv1devfdp
 include:
   - ../../../../components/db/graphdb/compose.yml
-  - ../../../../components/db/mongo.yml
+  - ../../../../components/db/mongo/compose.yml
   - ../../../../components/v1/fdp-client.yml
