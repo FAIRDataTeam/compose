@@ -1,6 +1,6 @@
 # setup for local development, running fdp from source, with an fdp-index for testing the ping service
 name: fdpev2devfdpping
 include:
-  - ../../../../components/db/postgres.yml
+  - ../../../../components/db/postgres/compose.yml
   - ../../../../components/v2/fdp-client.yml
   - ../../../../components/v2/fdp-index.yml
