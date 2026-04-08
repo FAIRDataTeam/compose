@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: "postgres:${POSTGRES_VERSION:-17.5}"
+    image: "postgres:${POSTGRES_VERSION:-17.9}"
     restart: no
     healthcheck:
       test: pg_isready --dbname=fdp --username=fdp || exit 1
