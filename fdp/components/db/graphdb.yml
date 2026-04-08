@@ -1,6 +1,6 @@
 services:
   graphdb:
-    image: "ontotext/graphdb:${GRAPHDB_VERSION:-10.8.8}"
+    image: "ontotext/graphdb:${GRAPHDB_VERSION:-10.8.13}"
     restart: no
     ports:
       # expose to localhost so we can use the graphdb web ui
