@@ -16,7 +16,7 @@ services:
   graphdb-init:
     environment:
       # space-separated list of repo names
-      REPO_NAMES: fdp
+      REPO_NAMES: fdp fdp-test
   mongo:
     volumes:
       - mongodbdata:/data/db
