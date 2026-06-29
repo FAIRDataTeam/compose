@@ -8,6 +8,8 @@ services:
       INSTANCE_PERSISTENTURL: http://localhost
       # enable /actuator/metrics endpoint (in addition to health and info endpoints)
       MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health, info, metrics
+      # disable ping
+      PING_ENABLED: false
     depends_on:
       mongo:
         condition: service_healthy
