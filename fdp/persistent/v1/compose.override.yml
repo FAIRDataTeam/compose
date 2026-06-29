@@ -3,6 +3,9 @@ services:
   # configure fdp to use graphdb instead of the in-memory triple store
   fdp:
     environment:
+      # enable /search/sparql endpoint (proxy for external triple store sparql endpoint)
+      INSTANCE_SPARQLPROXYENABLED: true
+      # configure external triple store
       REPOSITORY_TYPE: 4
       REPOSITORY_GRAPHDB_URL: http://graphdb:7200
       REPOSITORY_GRAPHDB_REPOSITORY: fdp
