@@ -1,0 +1,16 @@
+# note docker compose automatically loads compose.yml *and* compose.override.yml (if present)
+services:
+  fdp:
+    environment:
+      # default vue/vite dev server url
+      INSTANCE_CLIENTURL: http://localhost:5173
+      # persistent url must match fdpBaseUrl in the fdp-client-redux config,
+      # as well as the exposed port below
+      INSTANCE_PERSISTENTURL: http://localhost:8080
+    # expose on localhost, because a client running from source has no access to the docker network
+    ports:
+      - "127.0.0.1:8080:8080"
+  mongo:
+    # also expose mongo on localhost, in case we need to debug db content
+    ports:
+      - "127.0.0.1:27017:27017"
