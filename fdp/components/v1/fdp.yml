@@ -1,6 +1,6 @@
 services:
   fdp:
-    image: "fairdata/fairdatapoint:${FDP_VERSION:-1.20.3}"
+    image: "fairdata/fairdatapoint:${FDP_VERSION:-1.20.4}"
     restart: no
     environment:
       SERVER_PORT: 8080
