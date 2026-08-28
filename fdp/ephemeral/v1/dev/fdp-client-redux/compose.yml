@@ -1,5 +1,0 @@
-# setup for local development, running fdp-client-redux from source
-name: fdpev1devfdpclientredux
-include:
-  - ../../../../components/db/mongo/compose.yml
-  - ../../../../components/v1/fdp.yml
