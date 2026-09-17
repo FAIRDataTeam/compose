@@ -3,8 +3,8 @@
 This repository contains a collection of Docker compose files for development and testing of the [FAIR Data Point] reference implementation.
 
 >[!IMPORTANT]
->These files are ***not*** intended for use in production, because they do not take into account any form of security.
->However, the "persistent" stack can be used as a starting point for developing your own production configuration.
+>These files are ***not*** intended for use in production, because they do not take into account important production aspects like security, data management, etc.
+>Nevertheless, the "persistent" stack could be used as a *starting point* for developing your own production configuration.
 
 ## Quickstart
 
@@ -104,10 +104,6 @@ If you still want to use `1.17.1`, here are some workarounds:
 - (not tested) force emulation by specifying `platform: linux/amd64` for the `fdp-client` service in the compose file
 
 Check the `OS/ARCH` column on [Docker hub] to see which client versions do support `linux/arm64`. 
-
-## Work in progress...
-
-- Compose files for fdt need to be added (fair data train etc.)
 
 [`compose config`]: https://docs.docker.com/reference/cli/docker/compose/config/
 [merge]: https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/
