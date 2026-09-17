@@ -4,8 +4,8 @@ services:
     restart: no
     environment:
       SERVER_PORT: 8080
-      INSTANCE_CLIENTURL: http://localhost
-      INSTANCE_PERSISTENTURL: http://localhost
+      INSTANCE_CLIENTURL: http://localhost:8080
+      INSTANCE_PERSISTENTURL: http://localhost:8080
       # enable /actuator/metrics endpoint (in addition to health and info endpoints)
       MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health, info, metrics
       # disable ping
