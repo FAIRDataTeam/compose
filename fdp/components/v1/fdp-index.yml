@@ -2,6 +2,9 @@ services:
   fdp-index:
     image: "fairdata/fairdatapoint:${FDP_VERSION:-1.22.0}"
     restart: no
+    ports:
+      # expose on localhost, simulating a "public" url
+      - "127.0.0.1:8080:8080"
     environment:
       FDP_MONGO_DB: 'fdp-index'
       INSTANCE_CLIENTURL: "http://localhost:${FDP_INDEX_PORT:-8082}"

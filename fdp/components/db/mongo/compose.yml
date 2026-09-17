@@ -2,6 +2,9 @@ services:
   mongo:
     image: "mongo:${MONGO_VERSION:-8.2.6}"
     restart: no
+    # expose port on docker host for debugging
+    ports:
+      - "127.0.0.1:27017:27017"
     healthcheck:
       test: |
         [ $(mongosh --quiet --host localhost:27017 --eval "db.runCommand('ping').ok") = 1 ] || exit 1

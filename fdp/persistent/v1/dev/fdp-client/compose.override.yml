@@ -14,9 +14,6 @@ services:
       # depend on initialized graphdb (in addition to mongo)
       graphdb-init:
         condition: service_completed_successfully
-    # expose fdp on host, because fdp-client running from source has no access to the docker network
-    ports:
-      - "127.0.0.1:8080:8080"
   # use docker managed volumes for data persistence
   graphdb:
     volumes:
