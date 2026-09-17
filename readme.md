@@ -1,10 +1,9 @@
 # FAIRDataTeam compose collection
 
-This repository contains a collection of Docker compose files for development and testing of FAIRDataTeam applications 
-like [FAIR Data Point], [FAIR Data Train], etc.
+This repository contains a collection of Docker compose files for development and testing of the [FAIR Data Point] reference implementation.
 
 >[!IMPORTANT]
->These files are ***not*** intended for use in production.
+>These files are ***not*** intended for use in production, because they do not take into account any form of security.
 >However, the "persistent" stack can be used as a starting point for developing your own production configuration.
 
 ## Quickstart
@@ -14,7 +13,7 @@ like [FAIR Data Point], [FAIR Data Train], etc.
 3. visit http://localhost in your browser to play around with the application
 4. tear down: `docker compose down` (from the same directory)
 
-Note: To remove *persistent* data, it is convenient to use `docker compose down --volumes`.
+Note: To remove *persistent* data, it is convenient to use `docker compose down --volumes` (or `-v`).
 Do be careful though, because this is irreversible.
 
 ## Description
@@ -25,10 +24,16 @@ These components are used to construct compose files for various use cases.
 For example, [fdp/ephemeral/v1/compose.yml](fdp/ephemeral/v1/compose.yml) defines a minimal setup, consisting of the following Docker containers:
  
 - mongodb
-- fdp v1.x
-- fdp-client v1.x
+- fdp (v1.x)
+- fdp-client (v1.x)
+- fdp-ui (dev)
 
-This uses the FDP's default in-memory triplestore, and mongodb data is non-persistent (ephemeral), because no Docker volumes are defined. If you tear these containers down, the data are gone.
+This uses the FDP's default in-memory triplestore, and mongodb data is non-persistent (ephemeral), because no Docker volumes are defined.
+If you tear these containers down, the data are gone.
+
+>[!NOTE]
+>For now we include both the `fdp-client` and the new `fdp-ui` which is still under development.
+>The `fdp-client` component is now deprecated and will be removed when a stable `fdp-ui` is released.  
 
 If you want persistent storage, use one of the setups from the [fdp/persistent](./fdp/persistent) directory, which *do* use Docker volumes.
 
@@ -67,7 +72,11 @@ If desired, specific Docker image versions can be specified using environment va
 For example:
 
 ```bash
-export FDP_CLIENT_VERSION=2.0.0-alpha.3
+export FDP_VERSION=1.22.0
+export FDP_CLIENT_VERSION=1.18.1
+export FDP_UI_VERSION=0.2.0
+export MONGO_VERSION=8.2.6
+export GRAPHDB_VERSION=10.8.13
 ```
 
 Refer to the compose files in the `components` directories to see the environment variable names. 

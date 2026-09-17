@@ -2,5 +2,5 @@
 name: fdpev1devfdpping
 include:
   - ../../../../components/db/mongo/compose.yml
-  - ../../../../components/v1/fdp-client.yml
-  - ../../../../components/v1/fdp-index.yml
+  - ../../../../components/v1/fdp-client/compose.yml
+  - ../../../../components/v1/fdp-index/compose.yml

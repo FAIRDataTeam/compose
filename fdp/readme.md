@@ -6,8 +6,8 @@
 
 ## Background 
 
-To run a FAIR Data Point (FDP), we need at least a database, such as MongoDB or PostgreSQL, depending on the FDP version, and the FDP (back-end) application.
-Typically, this set-up is extended with an FDP-client (front-end) application.
+To run a FAIR Data Point (FDP), we need at least a MongoDB database and the FDP (back-end) application.
+Typically, this set-up is extended with an front-end application such as FDP-UI or FDP-client. 
 The FDP uses an in-memory triple store by default, but an external triple store, such as GraphDB, can be added for persistence.
 In addition, an FDP may communicate with other FDPs that are configured as FDP-index.
 
