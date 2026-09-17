@@ -1,0 +1,11 @@
+services:
+  fdp:
+    ports:
+      # expose on localhost, to enable direct interaction with the api for debugging
+      - "127.0.0.1:8080:8080"
+  fdp-ui:
+    ports:
+      # the fdp-ui docker.nginx.conf configures nginx in the fdp-ui container to listen on port 8080
+      # we expose it on localhost on port 81, because port 80 is already occupied by fdp-client
+      # todo: switch to port 80 when fdp-client is removed
+      - "127.0.0.1:81:8080"

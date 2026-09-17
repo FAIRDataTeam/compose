@@ -3,3 +3,4 @@ include:
   - ../../components/db/mongo/compose.yml
   - ../../components/v1/fdp/compose.yml
   - ../../components/v1/fdp-client/compose.yml
+  - ../../components/v1/fdp-ui/compose.yml
