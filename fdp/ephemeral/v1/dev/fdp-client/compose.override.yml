@@ -6,6 +6,3 @@ services:
       # on port 8081 (when using `npm run serve`, which calls vue-cli-service)
       INSTANCE_CLIENTURL: http://localhost:8081
       INSTANCE_PERSISTENTURL: http://localhost:8081
-    # expose on localhost, because a client running from source has no access to the docker network
-    ports:
-      - "127.0.0.1:8080:8080"
