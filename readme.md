@@ -31,6 +31,10 @@ For example, [fdp/ephemeral/v1/compose.yml](fdp/ephemeral/v1/compose.yml) define
 This uses the FDP's default in-memory triplestore, and mongodb data is non-persistent (ephemeral), because no Docker volumes are defined.
 If you tear these containers down, the data are gone.
 
+>[!NOTE]
+>For now we include both the `fdp-client` and the new `fdp-ui` which is still under development.
+>The `fdp-client` component is now deprecated and will be removed when a stable `fdp-ui` is released.  
+
 If you want persistent storage, use one of the setups from the [fdp/persistent](./fdp/persistent) directory, which *do* use Docker volumes.
 
 Similarly, if you're interested in the FDP index, run the setup from [fdp/ephemeral/v1/index](./fdp/ephemeral/v1/index), for example.
