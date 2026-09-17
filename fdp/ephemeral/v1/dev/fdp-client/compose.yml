@@ -2,4 +2,4 @@
 name: fdpev1devfdpclient
 include:
   - ../../../../components/db/mongo/compose.yml
-  - ../../../../components/v1/fdp.yml
+  - ../../../../components/v1/fdp/compose.yml
