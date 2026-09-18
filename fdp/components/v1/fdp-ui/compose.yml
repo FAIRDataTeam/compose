@@ -1,6 +1,6 @@
 services:
   fdp-ui:
-    image: "fairdata/fairdatapoint-ui:${FDP_UI_VERSION:-latest}"  # todo: pin default when we've reached a stable version
+    image: "fairdata/fairdatapoint-ui:${FDP_UI_VERSION:-0.2.1}"
     restart: no
     ports:
       # the fdp-ui docker.nginx.conf configures nginx in the fdp-ui container to listen on port 8080
