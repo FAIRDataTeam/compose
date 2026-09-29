@@ -1,6 +1,6 @@
 services:
   fdp-index:
-    image: "fairdata/fairdatapoint:${FDP_VERSION:-1.22.0}"
+    image: "fairdata/fairdatapoint:${FDP_VERSION:-1.22.2}"
     restart: no
     ports:
       # expose on localhost, simulating a "public" url
@@ -11,6 +11,8 @@ services:
       INSTANCE_INDEX: true
       INSTANCE_PERSISTENTURL: "http://localhost:${FDP_INDEX_PORT:-8082}"
       PING_ENABLED: false
+      # as of v1.22.1 the default (production) profile requires an explicit JWT secret
+      SECURITY_JWT_TOKEN_SECRETKEY: ${SECURITY_JWT_TOKEN_SECRETKEY:-dummy_secret_do_not_use_in_production}
       SERVER_PORT: "${FDP_INDEX_PORT:-8082}"
     depends_on:
       mongo:
