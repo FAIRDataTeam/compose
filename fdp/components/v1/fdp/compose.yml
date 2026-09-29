@@ -1,6 +1,6 @@
 services:
   fdp:
-    image: "fairdata/fairdatapoint:${FDP_VERSION:-1.22.0}"
+    image: "fairdata/fairdatapoint:${FDP_VERSION:-1.22.2}"
     restart: no
     ports:
       # expose on localhost, simulating a "public" url
