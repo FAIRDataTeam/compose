@@ -1,6 +1,6 @@
 services:
   mongo:
-    image: "mongo:${MONGO_VERSION:-8.3.11}"
+    image: "mongo:${MONGO_VERSION:-8.2.12}"
     restart: no
     # expose port on docker host for debugging
     ports:
