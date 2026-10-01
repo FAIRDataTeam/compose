@@ -6,7 +6,7 @@ services:
       - "127.0.0.1:80:80"
     environment:
       # enable index functionality via APP, so we don't need to use a separate fairdatapoint-index-client image
-      APP: fairdatapoint-index
+      APP: fairdatapoint-index  # todo: remove (only required for old versions <1.18.x)
       FDP_HOST: "fdp-index:8080"
     depends_on:
       fdp-index:

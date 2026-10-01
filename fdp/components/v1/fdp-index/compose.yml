@@ -12,6 +12,7 @@ services:
       PING_ENABLED: false
       INSTANCE_INDEX: true
       FDP_MONGO_DB: 'fdp-index'
+      INSTANCE_TITLE: FAIR Data Point Index
       # as of v1.22.1 the default (production) profile requires an explicit JWT secret
       SECURITY_JWT_TOKEN_SECRETKEY: ${SECURITY_JWT_TOKEN_SECRETKEY:-dummy_secret_do_not_use_in_production}
     depends_on:
