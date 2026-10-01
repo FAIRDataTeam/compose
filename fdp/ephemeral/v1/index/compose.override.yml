@@ -6,5 +6,6 @@ services:
       PING_ENDPOINTS: http://fdp-index:8080
 
   fdp-index-client:
-    ports:
+    # override the exposed port because fdp-client already is already using port 80
+    ports: !override
       - "127.0.0.1:82:80"
