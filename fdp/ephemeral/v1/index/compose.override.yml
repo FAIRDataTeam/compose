@@ -1,0 +1,10 @@
+# note docker compose automatically loads compose.yml *and* compose.override.yml (if present)
+services:
+  fdp:
+    environment:
+      PING_ENABLED: true
+      PING_ENDPOINTS: http://fdp-index:8082
+
+  fdp-index-client:
+    ports:
+      - "127.0.0.1:82:80"
