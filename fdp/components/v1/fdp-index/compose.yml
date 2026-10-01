@@ -4,21 +4,21 @@ services:
     restart: no
     ports:
       # expose on localhost, simulating a "public" url
-      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:8082:8080"
     environment:
-      FDP_MONGO_DB: 'fdp-index'
-      INSTANCE_CLIENTURL: "http://localhost:${FDP_INDEX_PORT:-8082}"
-      INSTANCE_INDEX: true
-      INSTANCE_PERSISTENTURL: "http://localhost:${FDP_INDEX_PORT:-8082}"
+      SERVER_PORT: 8080
+      INSTANCE_CLIENTURL: http://localhost:8082
+      INSTANCE_PERSISTENTURL: http://localhost:8082
       PING_ENABLED: false
+      INSTANCE_INDEX: true
+      FDP_MONGO_DB: 'fdp-index'
       # as of v1.22.1 the default (production) profile requires an explicit JWT secret
       SECURITY_JWT_TOKEN_SECRETKEY: ${SECURITY_JWT_TOKEN_SECRETKEY:-dummy_secret_do_not_use_in_production}
-      SERVER_PORT: "${FDP_INDEX_PORT:-8082}"
     depends_on:
       mongo:
         condition: service_healthy
     healthcheck:
-      test: "wget -q --spider http://localhost:${FDP_INDEX_PORT:-8082} || exit 1"
+      test: "wget -q --spider http://localhost:8080 || exit 1"
       interval: 5m
       start_interval: 3s
       start_period: 30s
