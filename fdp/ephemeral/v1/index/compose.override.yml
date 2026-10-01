@@ -3,7 +3,7 @@ services:
   fdp:
     environment:
       PING_ENABLED: true
-      PING_ENDPOINTS: http://fdp-index:8082
+      PING_ENDPOINTS: http://fdp-index:8080
 
   fdp-index-client:
     ports:
