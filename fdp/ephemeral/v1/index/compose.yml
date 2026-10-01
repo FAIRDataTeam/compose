@@ -1,5 +1,8 @@
+# this stack includes both an fdp-index and an fdp that is indexed
 name: fdpev1index
 include:
   - ../../../components/db/mongo/compose.yml
   - ../../../components/v1/fdp-index/compose.yml
   - ../../../components/v1/fdp-index-client/compose.yml
+  - ../../../components/v1/fdp/compose.yml
+  - ../../../components/v1/fdp-client/compose.yml
