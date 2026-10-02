@@ -1,0 +1,11 @@
+# This stack includes both an fdp-index and an fdp that is indexed.
+# NOTE: for the fdp ping to be accepted, we need to remove the default denylist from the index settings
+# TODO: override index ping denylist via env variable, as soon as fdp #1027 is fixed
+name: fdppv1index
+include:
+  - ../../../components/db/graphdb/compose.yml
+  - ../../../components/db/mongo/compose.yml
+  - ../../../components/v1/fdp/compose.yml
+  - ../../../components/v1/fdp-client/compose.yml
+  - ../../../components/v1/fdp-index/compose.yml
+  - ../../../components/v1/fdp-index-client/compose.yml

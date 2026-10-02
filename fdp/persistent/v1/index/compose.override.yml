@@ -1,0 +1,53 @@
+# note docker compose automatically loads compose.yml *and* compose.override.yml (if present)
+services:
+  fdp:
+    environment:
+      # these must be docker service urls for harvesting to work in our simple setup,
+      # but these links will fail in the client unless we add `127.0.0.1 fdp`
+      # to /etc/hosts on the docker host
+      INSTANCE_CLIENTURL: http://fdp:8080
+      INSTANCE_PERSISTENTURL: http://fdp:8080
+      PING_ENABLED: true
+      # the fdp can ping the fdp-index directly over the docker network
+      PING_ENDPOINTS: http://fdp-index:8080
+      # configure external triple store
+      REPOSITORY_TYPE: 4
+      REPOSITORY_GRAPHDB_URL: http://graphdb:7200
+      REPOSITORY_GRAPHDB_REPOSITORY: fdp-index
+    depends_on:
+      # depend on initialized graphdb (in addition to mongo)
+      graphdb-init:
+        condition: service_completed_successfully
+
+  fdp-index:
+    environment:
+      # configure external triple store
+      REPOSITORY_TYPE: 4
+      REPOSITORY_GRAPHDB_URL: http://graphdb:7200
+      REPOSITORY_GRAPHDB_REPOSITORY: fdp-index
+    depends_on:
+      # depend on initialized graphdb (in addition to mongo)
+      graphdb-init:
+        condition: service_completed_successfully
+
+  fdp-index-client:
+    # override the exposed port because fdp-client already is already using port 80
+    ports: !override
+      - "127.0.0.1:82:80"
+
+  graphdb-init:
+    environment:
+      # space-separated list of repo names
+      REPO_NAMES: fdp fdp-index
+
+  # use docker managed volumes for data persistence
+  graphdb:
+    volumes:
+      - graphdbdata:/opt/graphdb/home
+  mongo:
+    volumes:
+      - mongodbdata:/data/db
+
+volumes:
+  graphdbdata:
+  mongodbdata:
