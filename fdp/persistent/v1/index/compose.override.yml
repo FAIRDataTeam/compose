@@ -6,7 +6,7 @@ services:
       # but these links will fail in the client unless we add `127.0.0.1 fdp`
       # to /etc/hosts on the docker host
       INSTANCE_CLIENTURL: http://fdp:8080
-      INSTANCE_PERSISTENTURL: http://fdp:8080
+      INSTANCE_PERSISTENTURL: http://localhost:8080
       PING_ENABLED: true
       # the fdp can ping the fdp-index directly over the docker network
       PING_ENDPOINTS: http://fdp-index:8080
