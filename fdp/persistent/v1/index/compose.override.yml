@@ -2,10 +2,12 @@
 services:
   fdp:
     environment:
-      # these must be docker service urls for harvesting to work in our simple setup,
-      # but these links will fail in the client unless we add `127.0.0.1 fdp`
-      # to /etc/hosts on the docker host
+      # the client url is sent to the index in each ping, so it must be adocker service
+      # url if we want the index to be able to connect to the fdp over the docker network
+      # instead of the host network (this link will fail in the client unless we add
+      # `127.0.0.1 fdp` to /etc/hosts on the docker host
       INSTANCE_CLIENTURL: http://fdp:8080
+      # persistent url ends up as the rdf subject
       INSTANCE_PERSISTENTURL: http://localhost:8080
       PING_ENABLED: true
       # the fdp can ping the fdp-index directly over the docker network
