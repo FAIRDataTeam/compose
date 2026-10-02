@@ -2,20 +2,14 @@
 services:
   fdp:
     environment:
-      # the fdp-index tries to harvest the fdp via the client-url,
-      # so we need to make this available to the fdp-index using the docker host-gateway
-      # todo: this does not work... index says unreachable
-      INSTANCE_CLIENTURL: http://host.docker.internal:8080
-      INSTANCE_PERSISTENTURL: http://host.docker.internal:8080
+      # these must be docker service urls for harvesting to work in our simple setup,
+      # but these links will fail in the client unless we add `127.0.0.1 fdp`
+      # to /etc/hosts on the docker host
+      INSTANCE_CLIENTURL: http://fdp:8080
+      INSTANCE_PERSISTENTURL: http://fdp:8080
       PING_ENABLED: true
       # the fdp can ping the fdp-index directly over the docker network
       PING_ENDPOINTS: http://fdp-index:8080
-
-  fdp-index:
-    # the fdp-index will try to harvest the fdp via its INSTANCE_CLIENT_URL,
-    # which must be a "public" url, so we must give it access to the host-gateway
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
 
   fdp-index-client:
     # override the exposed port because fdp-client already is already using port 80
