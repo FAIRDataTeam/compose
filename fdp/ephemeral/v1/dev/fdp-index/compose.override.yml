@@ -9,7 +9,7 @@ services:
       - "host.docker.internal:host-gateway"
   fdp:
     # expose to docker host, so the fdp-index (running from source) can harvest the metadata
-    ports:
+    ports: !override
       - "127.0.0.1:8081:8080"
     environment:
       # IMPORTANT: remove localhost from the deny-list in the fdp-index config,
