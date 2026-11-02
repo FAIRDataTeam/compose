@@ -1,4 +1,4 @@
-# note docker compose automatically loads compose.yml *and* compose.override.yml (if present)
+# note docker compose automatically loads compose.yaml *and* compose.override.yaml (if present)
 
 # BEWARE: The fdp running from source needs to be configured to use graphdb.
 # This can be done by setting the following environment (configuration) variables:

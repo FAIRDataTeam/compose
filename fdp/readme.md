@@ -28,7 +28,7 @@ The [dev/*] subdirectories contain compose files for different development scena
 - `fdp-client`: enables development of FDP-client source code by running database and FDP containers
 
 >[!NOTE]
->Re-use of components is achieved by merging files with the help of the [include] top-level element, in combination with [compose.override.yml] files.
+>Re-use of components is achieved by merging files with the help of the [include] top-level element, in combination with [compose.override.yaml] files.
 >To check the actual compose configuration resulting from this merge, use the [config] command.
 >For example:
 >```bash
@@ -37,7 +37,7 @@ The [dev/*] subdirectories contain compose files for different development scena
 >```
 
 [components]: ./components
-[compose.override.yml]: https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/
+[compose.override.yaml]: https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/
 [config]: https://docs.docker.com/reference/cli/docker/compose/config/
 [ephemeral]: ./ephemeral
 [ephemeral/v1]: ./ephemeral/v1

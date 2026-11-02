@@ -1,0 +1,7 @@
+name: fdppv1
+include:
+  - ../../components/db/graphdb/compose.yaml
+  - ../../components/db/mongo/compose.yaml
+  - ../../components/v1/fdp/compose.yaml
+  - ../../components/v1/fdp-client/compose.yaml
+  - ../../components/v1/fdp-ui/compose.yaml

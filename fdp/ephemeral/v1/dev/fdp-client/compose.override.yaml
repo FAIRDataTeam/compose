@@ -1,4 +1,4 @@
-# note docker compose automatically loads compose.yml *and* compose.override.yml (if present)
+# note docker compose automatically loads compose.yaml *and* compose.override.yaml (if present)
 services:
   fdp:
     environment:
