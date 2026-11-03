@@ -8,7 +8,7 @@ This repository contains a collection of Docker compose files for development an
 
 ## Quickstart
 
-1. `cd` into the directory for the desired configuration, e.g. `cd fdp/ephemeral/v1` (this is important because we rely on autodetection of `compose.override.yml` files)
+1. `cd` into the directory for the desired configuration, e.g. `cd fdp/ephemeral/v1` (this is important because we rely on autodetection of `compose.override.yaml` files)
 2. set up: `docker compose up -d`
 3. visit http://localhost in your browser to play around with the application
 4. tear down: `docker compose down` (from the same directory)
@@ -21,7 +21,7 @@ Do be careful though, because this is irreversible.
 Re-usable Docker compose services are specified in separate directories such as [fdp/components](./fdp/components).
 These components are used to construct compose files for various use cases.
 
-For example, [fdp/ephemeral/v1/compose.yml](fdp/ephemeral/v1/compose.yml) defines a minimal setup, consisting of the following Docker containers:
+For example, [fdp/ephemeral/v1/compose.yaml](fdp/ephemeral/v1/compose.yaml) defines a minimal setup, consisting of the following Docker containers:
  
 - mongodb
 - fdp (v1.x)
@@ -43,13 +43,13 @@ Similarly, if you're interested in the FDP index, run the setup from [fdp/epheme
 
 Although it is possible to specify one or more Docker compose files on the command line, using the `-f` option, this repo relies on the default Docker compose behavior which is to automatically [merge] the following files:
 
-- `compose.yml`
-- `compose.override.yml` (optional)
+- `compose.yaml`
+- `compose.override.yaml` (optional)
 
 This way, we can `cd` into the desired directory and then simply call `docker compose` commands, without having to specify files explicitly using `-f`. 
 Moreover, some configurations rely on this method to override certain service attributes. 
 
-For example, compare this approach to merge `compose.yml` with `compose.override.yml`:
+For example, compare this approach to merge `compose.yaml` with `compose.override.yaml`:
 
 ```bash
 cd fdp/ephemeral/v1/dev/fdp
@@ -59,7 +59,7 @@ docker compose up -d
 with the alternative:
 
 ```bash
-docker compose -f fdp/ephemeral/v1/dev/fdp/compose.yml -f fdp/ephemeral/v1/dev/fdp/compose.override.yml up -d
+docker compose -f fdp/ephemeral/v1/dev/fdp/compose.yaml -f fdp/ephemeral/v1/dev/fdp/compose.override.yaml up -d
 ```
 
 To check the actual result of such a [merge], we can use the [`compose config`] command:

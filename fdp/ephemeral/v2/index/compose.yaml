@@ -1,0 +1,5 @@
+name: fdpev2index
+include:
+  - ../../../components/db/postgres/compose.yaml
+  - ../../../components/v2/fdp-index.yaml
+  - ../../../components/v2/fdp-index-client.yaml

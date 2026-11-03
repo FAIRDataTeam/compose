@@ -1,4 +1,4 @@
-# note docker compose automatically loads compose.yml *and* compose.override.yml (if present)
+# note docker compose automatically loads compose.yaml *and* compose.override.yaml (if present)
 services:
   fdp:
     # expose on localhost, because a client running from source has no access to the docker network

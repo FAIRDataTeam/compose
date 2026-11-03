@@ -1,0 +1,5 @@
+name: fdpev1deve2e
+include:
+  - ../../../../components/db/mongo/compose.yaml
+  - ../../../../components/v1/fdp/compose.yaml
+  - ../../../../components/v1/fdp-client/compose.yaml
