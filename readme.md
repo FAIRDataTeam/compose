@@ -6,6 +6,11 @@ This repository contains a collection of Docker compose files for development an
 >These files are ***not*** intended for use in production, because they do not take into account important production aspects like security, data management, etc.
 >Nevertheless, the "persistent" stack could be used as a *starting point* for developing your own production configuration.
 
+>[!WARNING]
+>This repository does ***not*** conform to any semantic versioning.
+>Because the compose repo is a development tool, we reserve the right to make breaking changes without prior warning.
+>If there *are* breaking changes, these will be described in the [release notes], so please keep an eye on those.
+
 ## Quickstart
 
 1. `cd` into the directory for the desired configuration, e.g. `cd fdp/ephemeral/v1` (this is important because we rely on autodetection of `compose.override.yml` files)
@@ -112,3 +117,4 @@ Check the `OS/ARCH` column on [Docker hub] to see which client versions do suppo
 [Docker hub]: https://hub.docker.com/r/fairdata/fairdatapoint-client/tags
 [`.env` file]: https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#env-file
 [docker environment variables]: https://docs.docker.com/compose/how-tos/environment-variables/set-environment-variables/
+[release notes]:  https://github.com/FAIRDataTeam/compose/releases
