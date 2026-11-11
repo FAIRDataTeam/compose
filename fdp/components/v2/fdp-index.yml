@@ -3,9 +3,9 @@ services:
     image: "fairdata/fairdatapoint:${FDP_VERSION:-2.0.0-alpha.3}"
     restart: no
     environment:
-      INSTANCE_CLIENTURL: "http://localhost:${FDP_INDEX_PORT:-8082}"
+      INSTANCE_CLIENTURL: "http://localhost:${FDP_INDEX_PORT:-8082}/"
       INSTANCE_INDEX: true
-      INSTANCE_PERSISTENTURL: "http://localhost:${FDP_INDEX_PORT:-8082}"
+      INSTANCE_PERSISTENTURL: "http://localhost:${FDP_INDEX_PORT:-8082}/"
       JAVA_TOOL_OPTIONS: -Dspring.profiles.active=development
       PING_ENABLED: false
       SERVER_PORT: "${FDP_INDEX_PORT:-8082}"

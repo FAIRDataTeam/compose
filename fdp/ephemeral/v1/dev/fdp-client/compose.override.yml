@@ -4,5 +4,5 @@ services:
     environment:
       # if we run the fdp at port 8080, the fdp-client will automatically listen
       # on port 8081 (when using `npm run serve`, which calls vue-cli-service)
-      INSTANCE_CLIENTURL: http://localhost:8081
-      INSTANCE_PERSISTENTURL: http://localhost:8081
+      INSTANCE_CLIENTURL: http://localhost:8081/
+      INSTANCE_PERSISTENTURL: http://localhost:8081/
