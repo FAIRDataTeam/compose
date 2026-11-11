@@ -15,7 +15,7 @@ services:
       # IMPORTANT: remove localhost from the deny-list in the fdp-index config,
       # using the client's index settings, otherwise pings from this fdp are denied
       # todo: implement a way to override the default denyList in the fdp
-      INSTANCE_CLIENTURL: http://localhost:8081
+      INSTANCE_CLIENTURL: http://localhost:8081/
       INSTANCE_INDEX: false
       PING_ENABLED: true
       PING_ENDPOINTS: http://host.docker.internal:8080
