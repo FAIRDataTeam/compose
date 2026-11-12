@@ -5,7 +5,7 @@ changelog:
   categories:
     - title: Breaking changes
       labels:
-        - breaking-change
+        - breaking
     - title: Configuration changes
       labels:
         - configuration
@@ -20,7 +20,7 @@ changelog:
         - '*'
       exclude:
         labels:
-          - breaking-change
+          - breaking
           - configuration
           - deprecation
           - feature
