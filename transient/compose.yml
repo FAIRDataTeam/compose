@@ -1,6 +1,6 @@
 name: fdpt
 include:
-  - ../../components/db/mongo/compose.yml
-  - ../../components/fdp/compose.yml
-  - ../../components/fdp-client/compose.yml
-  - ../../components/fdp-ui/compose.yml
+  - ../components/db/mongo/compose.yml
+  - ../components/fdp/compose.yml
+  - ../components/fdp-client/compose.yml
+  - ../components/fdp-ui/compose.yml
