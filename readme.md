@@ -11,6 +11,16 @@ This repository contains a collection of Docker compose files for development an
 >Because the compose repo is a development tool, we reserve the right to make breaking changes without prior warning.
 >If there *are* breaking changes, these will be described in the [release notes], so please keep an eye on those.
 
+>[!NOTE]
+>Release 2026.21 introduced a major change in project file paths:
+>
+>- removed `fdp` and `v1` subdirectories
+>- renamed `ephemeral` to `transient`
+>- removed all `v2` configurations
+>- changed file extensions from `.yml` to `.yaml`
+>
+>For example, the old `fdp/ephemeral/v1/compose.yml` is now `transient/compose.yaml`.
+
 ## Quickstart
 
 1. `cd` into the directory for the desired configuration, e.g. `cd transient` (this is important because we rely on autodetection of `compose.override.yml` files)
