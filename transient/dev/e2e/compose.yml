@@ -1,5 +1,5 @@
-name: fdpev1deve2e
+name: fdptdeve2e
 include:
-  - ../../../../components/db/mongo/compose.yml
-  - ../../../../components/v1/fdp/compose.yml
-  - ../../../../components/v1/fdp-client/compose.yml
+  - ../../../components/db/mongo/compose.yml
+  - ../../../components/fdp/compose.yml
+  - ../../../components/fdp-client/compose.yml

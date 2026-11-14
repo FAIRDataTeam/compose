@@ -1,5 +1,5 @@
 # setup for local development, running fdp-client from source
-name: fdpev1devfdpclient
+name: fdptdevfdpclient
 include:
-  - ../../../../components/db/mongo/compose.yml
-  - ../../../../components/v1/fdp/compose.yml
+  - ../../../components/db/mongo/compose.yml
+  - ../../../components/fdp/compose.yml
