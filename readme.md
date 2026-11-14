@@ -23,7 +23,7 @@ This repository contains a collection of Docker compose files for development an
 
 ## Quickstart
 
-1. `cd` into the directory for the desired configuration, e.g. `cd transient` (this is important because we rely on autodetection of `compose.override.yml` files)
+1. `cd` into the directory for the desired configuration, e.g. `cd transient` (this is important because we rely on autodetection of `compose.override.yaml` files)
 2. set up: `docker compose up -d`
 3. visit http://localhost in your browser to play around with the application
 4. tear down: `docker compose down` (from the same directory)
@@ -36,7 +36,7 @@ Do be careful though, because this is irreversible.
 Re-usable Docker compose services are specified in separate directories such as [components](./components).
 These components are used to construct compose files for various use cases.
 
-For example, [transient/compose.yml](transient/compose.yml) defines a minimal setup, consisting of the following Docker containers:
+For example, [transient/compose.yaml](transient/compose.yaml) defines a minimal setup, consisting of the following Docker containers:
  
 - mongodb
 - fdp (v1.x)
@@ -58,13 +58,13 @@ Similarly, if you're interested in the FDP index, run the setup from [transient/
 
 Although it is possible to specify one or more Docker compose files on the command line, using the `-f` option, this repo relies on the default Docker compose behavior which is to automatically [merge] the following files:
 
-- `compose.yml`
-- `compose.override.yml` (optional)
+- `compose.yaml`
+- `compose.override.yaml` (optional)
 
 This way, we can `cd` into the desired directory and then simply call `docker compose` commands, without having to specify files explicitly using `-f`. 
 Moreover, some configurations rely on this method to override certain service attributes. 
 
-For example, compare this approach to merge `compose.yml` with `compose.override.yml`:
+For example, compare this approach to merge `compose.yaml` with `compose.override.yaml`:
 
 ```bash
 cd transient/dev/fdp
@@ -74,7 +74,7 @@ docker compose up -d
 with the alternative:
 
 ```bash
-docker compose -f transient/dev/compose.yml -f transient/dev/fdp/compose.override.yml up -d
+docker compose -f transient/dev/compose.yaml -f transient/dev/fdp/compose.override.yaml up -d
 ```
 
 To check the actual result of such a [merge], we can use the [`compose config`] command:
@@ -99,31 +99,13 @@ Refer to the compose files in the `components` directories to see the environmen
 If you want to persist the use of specific versions, create a [`.env` file] in the applicable directory with the desired environment variables.
 This file will be picked up automatically when you run `docker compose`. See [docker environment variables] for more information.
 
-## Troubleshooting
+## More details
 
-### Compose up fails with "no matching manifest" on macOS
-
-On a mac with Apple silicon (or on other computers with arm64 processor architecture), `docker compose up -d` may produce an error like the following:
-
-```none
-no matching manifest for linux/arm64/v8 in the manifest list entries
-``` 
- 
-This is because the fdp-client version `1.17.1` does not have Docker images for arm64 architectures, for reasons explained in FAIRDataTeam/FAIRDataPoint-client#188.
-
-That is fixed in version `1.18.0`.
-
-If you still want to use `1.17.1`, here are some workarounds:
-
-- roll back to an older version of the client, using env variables, e.g. `export FDP_CLIENT_VERSION=1.17.0`
-- (not tested) force emulation by specifying `platform: linux/amd64` for the `fdp-client` service in the compose file
-
-Check the `OS/ARCH` column on [Docker hub] to see which client versions do support `linux/arm64`. 
+See [readme.fdp.md](./readme.fdp.md) for more information about the FDP stacks.
 
 [`compose config`]: https://docs.docker.com/reference/cli/docker/compose/config/
 [merge]: https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/
 [FAIR Data Point]: https://github.com/FAIRDataTeam/FAIRDataPoint
-[FAIR Data Train]: https://github.com/FAIRDataTeam/FAIRDataTrain
 [Docker hub]: https://hub.docker.com/r/fairdata/fairdatapoint-client/tags
 [`.env` file]: https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#env-file
 [docker environment variables]: https://docs.docker.com/compose/how-tos/environment-variables/set-environment-variables/

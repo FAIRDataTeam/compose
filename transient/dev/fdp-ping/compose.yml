@@ -1,6 +1,0 @@
-# setup for local development, running fdp from source, with an fdp-index for testing the ping service
-name: fdptdevfdpping
-include:
-  - ../../../components/db/mongo/compose.yml
-  - ../../../components/fdp-client/compose.yml
-  - ../../../components/fdp-index/compose.yml

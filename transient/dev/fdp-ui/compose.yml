@@ -1,5 +1,0 @@
-# setup for local development, running fdp-ui from source
-name: fdptdevfdpui
-include:
-  - ../../../components/db/mongo/compose.yml
-  - ../../../components/fdp/compose.yml

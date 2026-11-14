@@ -1,5 +1,0 @@
-name: fdptdeve2e
-include:
-  - ../../../components/db/mongo/compose.yml
-  - ../../../components/fdp/compose.yml
-  - ../../../components/fdp-client/compose.yml

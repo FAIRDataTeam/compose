@@ -3,8 +3,8 @@
 # TODO: override index ping denylist via env variable, as soon as fdp #1027 is fixed
 name: fdptindex
 include:
-  - ../../components/db/mongo/compose.yml
-  - ../../components/fdp-index/compose.yml
-  - ../../components/fdp-index-client/compose.yml
-  - ../../components/fdp/compose.yml
-  - ../../components/fdp-client/compose.yml
+  - ../../components/db/mongo/compose.yaml
+  - ../../components/fdp-index/compose.yaml
+  - ../../components/fdp-index-client/compose.yaml
+  - ../../components/fdp/compose.yaml
+  - ../../components/fdp-client/compose.yaml

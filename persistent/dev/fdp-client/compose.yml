@@ -1,6 +1,0 @@
-# setup for local development, running fdp-client from source
-name: fdptdevfdpclient
-include:
-  - ../../../components/db/graphdb/compose.yml
-  - ../../../components/db/mongo/compose.yml
-  - ../../../components/fdp/compose.yml
