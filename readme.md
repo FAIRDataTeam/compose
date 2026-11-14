@@ -13,7 +13,7 @@ This repository contains a collection of Docker compose files for development an
 
 ## Quickstart
 
-1. `cd` into the directory for the desired configuration, e.g. `cd fdp/ephemeral/v1` (this is important because we rely on autodetection of `compose.override.yml` files)
+1. `cd` into the directory for the desired configuration, e.g. `cd transient` (this is important because we rely on autodetection of `compose.override.yml` files)
 2. set up: `docker compose up -d`
 3. visit http://localhost in your browser to play around with the application
 4. tear down: `docker compose down` (from the same directory)
@@ -23,26 +23,26 @@ Do be careful though, because this is irreversible.
 
 ## Description
 
-Re-usable Docker compose services are specified in separate directories such as [fdp/components](./fdp/components).
+Re-usable Docker compose services are specified in separate directories such as [components](./components).
 These components are used to construct compose files for various use cases.
 
-For example, [fdp/ephemeral/v1/compose.yml](fdp/ephemeral/v1/compose.yml) defines a minimal setup, consisting of the following Docker containers:
+For example, [transient/compose.yml](transient/compose.yml) defines a minimal setup, consisting of the following Docker containers:
  
 - mongodb
 - fdp (v1.x)
 - fdp-client (v1.x)
 - fdp-ui (dev)
 
-This uses the FDP's default in-memory triplestore, and mongodb data is non-persistent (ephemeral), because no Docker volumes are defined.
+This uses the FDP's default in-memory triplestore, and mongodb data is non-persistent (transient), because no Docker volumes are defined.
 If you tear these containers down, the data are gone.
 
 >[!NOTE]
 >For now we include both the `fdp-client` and the new `fdp-ui` which is still under development.
 >The `fdp-client` component is now deprecated and will be removed when a stable `fdp-ui` is released.  
 
-If you want persistent storage, use one of the setups from the [fdp/persistent](./fdp/persistent) directory, which *do* use Docker volumes.
+If you want persistent storage, use one of the setups from the [persistent](./persistent) directory, which *do* use Docker volumes.
 
-Similarly, if you're interested in the FDP index, run the setup from [fdp/ephemeral/v1/index](./fdp/ephemeral/v1/index), for example.
+Similarly, if you're interested in the FDP index, run the setup from [transient/index](./transient/index), for example.
 
 ## Usage
 
@@ -57,14 +57,14 @@ Moreover, some configurations rely on this method to override certain service at
 For example, compare this approach to merge `compose.yml` with `compose.override.yml`:
 
 ```bash
-cd fdp/ephemeral/v1/dev/fdp
+cd transient/dev/fdp
 docker compose up -d
 ```
 
 with the alternative:
 
 ```bash
-docker compose -f fdp/ephemeral/v1/dev/fdp/compose.yml -f fdp/ephemeral/v1/dev/fdp/compose.override.yml up -d
+docker compose -f transient/dev/compose.yml -f transient/dev/fdp/compose.override.yml up -d
 ```
 
 To check the actual result of such a [merge], we can use the [`compose config`] command:
