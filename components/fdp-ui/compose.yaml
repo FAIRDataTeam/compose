@@ -4,9 +4,9 @@ services:
     restart: no
     ports:
       # the fdp-ui docker.nginx.conf configures nginx in the fdp-ui container to listen on port 8080
-      # we expose fdp-ui on localhost at port 81, because port 80 is already occupied by fdp-client
-      # todo: change to port 80 once fdp-client is removed
-      - "127.0.0.1:81:8080"
+      # we expose fdp-ui on localhost at port 8001, because port 8000 is already occupied by fdp-client
+      # todo: change to port 8000 once fdp-client is removed
+      - "127.0.0.1:8001:8080"
     volumes:
       # override the default runtime config to point to the fdp api on localhost
       - "./config.json:/usr/share/nginx/html/config.json"
