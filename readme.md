@@ -21,7 +21,7 @@ This repository contains a collection of Docker compose files for development an
 >
 >For example, the old `fdp/ephemeral/v1/compose.yml` is now `transient/compose.yaml`.
 >
->In addition, the `fdp-client` and `fdp-ui` ports are now mapped to `8000` and `8001` on the docker host instead of `80` and `81`.
+>In addition, the `fdp-client` and `fdp-ui` ports are now mapped to `8000-8002` on the docker host instead of `80-82`.
 
 ## Quickstart
 
