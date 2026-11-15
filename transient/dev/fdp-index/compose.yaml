@@ -1,0 +1,6 @@
+name: fdptdevfdpindex
+include:
+  - ../../../components/db/mongo/compose.yaml
+  - ../../../components/fdp-index-client/compose.yaml
+  # the fdp-index runs from source, but we add an additional fdp to generate pings
+  - ../../../components/fdp/compose.yaml
