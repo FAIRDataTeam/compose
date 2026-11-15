@@ -20,6 +20,7 @@ services:
         condition: service_healthy
     healthcheck:
       test: "wget -q --spider http://localhost:8080 || exit 1"
-      interval: 5m
+      # todo: revert interval to 5m once podman supports start_interval
+      interval: 10s
       start_interval: 3s
       start_period: 30s
